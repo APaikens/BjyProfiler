@@ -135,6 +135,12 @@ class Profiler implements ProfilerInterface
     public function profilerStart($target)
     {
         $sql = $target->getSql();
+        //if SQL is not set, check other options
+        if(null == $sql){
+            //MSSQL - stored procedure name
+            $resource = $target->getResource();
+            $sql = $resource->queryString;
+        }
         $params = $target->getParameterContainer()->getNamedArray();
         $this->startQuery($sql, $params);
     }
