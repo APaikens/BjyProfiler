@@ -10,6 +10,7 @@ namespace BjyProfiler\Db\Adapter;
 use BjyProfiler\Db\Profiler\Profiler;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use \Interop\Container\ContainerInterface;
 
 class ProfilingAdapterFactory implements FactoryInterface
 {
