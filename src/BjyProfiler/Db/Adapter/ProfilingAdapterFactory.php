@@ -13,13 +13,12 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 class ProfilingAdapterFactory implements FactoryInterface
 {
-
-    /**
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
+    public function createService(ServiceLocatorInterface $serviceLocator) {
+        return $this->__invoke($serviceLocator,null);
+    }
+    
+    
+    public function __invoke($container) {
         $config = $serviceLocator->get('Configuration');
         $dbParams = $config['db'];
         $adapter = new ProfilingAdapter($dbParams);
@@ -33,4 +32,5 @@ class ProfilingAdapterFactory implements FactoryInterface
         $adapter->injectProfilingStatementPrototype($options);
         return $adapter;
     }
+  
 }
