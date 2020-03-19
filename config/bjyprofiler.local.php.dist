@@ -12,7 +12,7 @@ $dbParams = array(
 return array(
     'service_manager' => array(
         'factories' => array(
-            'Zend\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
+            'laminas\Db\Adapter\Adapter' => function ($sm) use ($dbParams) {
                 $adapter = new BjyProfiler\Db\Adapter\ProfilingAdapter(array(
                     'driver'    => 'pdo',
                     'dsn'       => 'mysql:dbname='.$dbParams['database'].';host='.$dbParams['hostname'],
@@ -23,10 +23,10 @@ return array(
                 ));
 
                 if (php_sapi_name() == 'cli') {
-                    $logger = new Zend\Log\Logger();
+                    $logger = new Laminas\Log\Logger();
                     // write queries profiling info to stdout in CLI mode
-                    $writer = new Zend\Log\Writer\Stream('php://output');
-                    $logger->addWriter($writer, Zend\Log\Logger::DEBUG);
+                    $writer = new Laminas\Log\Writer\Stream('php://output');
+                    $logger->addWriter($writer, Laminas\Log\Logger::DEBUG);
                     $adapter->setProfiler(new BjyProfiler\Db\Profiler\LoggingProfiler($logger));
                 } else {
                     $adapter->setProfiler(new BjyProfiler\Db\Profiler\Profiler());
