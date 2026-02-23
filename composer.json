@@ -16,9 +16,15 @@
             "homepage": "http://bjyoungblood.com/"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/scoumbourdis/laminas-db"
+        }
+    ],
     "require": {
-        "php": ">=7.3",
-        "laminas/laminas-db": ">=2.1.0"
+        "php": ">=8.4",
+        "scoumbourdis/laminas-db": "^2.21"
     },
     "autoload": {
         "psr-4": {
