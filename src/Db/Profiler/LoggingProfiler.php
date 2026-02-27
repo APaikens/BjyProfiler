@@ -45,7 +45,7 @@ class LoggingProfiler extends Profiler
      */
     protected $parametersFinish = array('elapsed');
 
-    public function __construct(Logger $logger, $enabled = true, array $options = array())
+    public function __construct(Logger $logger, $enabled = true, ?array $options = array())
     {
         parent::__construct($enabled);
         $this->setLogger($logger);

@@ -23,7 +23,7 @@ class ProfilingAdapter extends Adapter
         return $this->profiler;
     }
 
-    public function query($sql, $parametersOrQueryMode = self::QUERY_MODE_PREPARE, ResultSet\ResultSetInterface $resultPrototype = null)
+    public function query($sql, $parametersOrQueryMode = self::QUERY_MODE_PREPARE, ?ResultSet\ResultSetInterface $resultPrototype = null)
     {
         $this->getProfiler()->startQuery($sql);
         $return = parent::query($sql, $parametersOrQueryMode, $resultPrototype);
